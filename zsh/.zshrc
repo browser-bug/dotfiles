@@ -114,6 +114,7 @@ PROMPT="%{$fg[white]%}%n@%{$fg[white]%}%m%{$reset_color%} ${PROMPT}"
 
 # Paths
 export PATH="/usr/local/bin/margot_heel_cli:$PATH"
+export PATH="$HOME/bin:$PATH"
 
 # Reboot directly to Windows
 # Inspired by http://askubuntu.com/questions/18170/how-to-reboot-into-windows-from-ubuntu
