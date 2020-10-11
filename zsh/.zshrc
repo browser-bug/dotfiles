@@ -106,6 +106,7 @@ alias vim='nvim'
 alias python='python3'
 alias opensubtitles='python3 ~/.local/share/nautilus/scripts/OpenSubtitlesDownload.py --cli'
 alias open='xdg-open'
+alias fd='fdfind'
 
 source /home/bernardo/.zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
