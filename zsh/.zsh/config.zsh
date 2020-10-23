@@ -14,9 +14,6 @@ SAVEHIST=100000
 setopt EXTENDED_HISTORY # add timestamps to history
 setopt APPEND_HISTORY   # adds history
 
-# Preferred editor for local and remote sessions
- if [[ -n $SSH_CONNECTION ]]; then
-   export EDITOR='nvim'
- else
-   export EDITOR='nvim'
- fi
+# Key bindings
+bindkey '^H' backward-kill-word
+bindkey '^[[3^' kill-word
