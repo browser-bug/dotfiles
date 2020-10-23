@@ -1,3 +1,3 @@
-rofi.modi: window,run,ssh,drun
+rofi.modi: window,drun
 rofi.lines: 5
 rofi.theme: /usr/share/rofi/themes/gruvbox-dark.rasi
