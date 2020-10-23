@@ -90,6 +90,9 @@ source $ZSH/oh-my-zsh.sh
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
 
+# Sources
+source /home/bernardo/.zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
 # Bindings
 
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
@@ -101,14 +104,12 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
+
 # Aliases
-alias vim='nvim'
 alias python='python3'
 alias opensubtitles='python3 ~/.local/share/nautilus/scripts/OpenSubtitlesDownload.py --cli'
 alias open='xdg-open'
 alias fd='fdfind'
-
-source /home/bernardo/.zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 # Showing hostname
 PROMPT="%{$fg[white]%}%n@%{$fg[white]%}%m%{$reset_color%} ${PROMPT}"
