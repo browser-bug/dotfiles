@@ -4,7 +4,7 @@ My dotfiles are managed with [GNU stow](http://www.gnu.org/software/stow/), a fr
 # Prerequisites
 All you need is [GNU stow](http://www.gnu.org/software/stow/).
 
-(e.g. on Ubuntu: `sudo apt-get install stow`)
+(e.g. on Debian: `sudo apt-get install stow`, on OSX: `brew install stow`)
 
 # Install
 1. clone the repository : `git clone https://github.com/browser-bug/dotfiles ~/ ; cd ~/dotfiles`
