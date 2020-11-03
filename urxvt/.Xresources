@@ -25,23 +25,9 @@ URxvt*background:                     #282828
 URxvt*foreground:                     #d5c4a1
 URxvt*cursorColor:                    #d5c4a1
 
-! URxvt*colorBD:                        color
-! URxvt*colorIT:                        color
-! URxvt*colorUL:                        color
-! URxvt*colorRV:                        color
-! URxvt*underlineColor:                 color
 URxvt*scrollColor:                    #d5c4a1
-! URxvt*troughColor:                    color
 URxvt*highlightColor:                 #7c6f54
 URxvt*highlightTextColor:             #bdae93
-! URxvt*cursorColor2:                   color
-! URxvt*pointerColor:                   color
-! URxvt*pointerColor2:                  color
-! URxvt*borderColor:                    color
-! URxvt*tab-bg:                         colour
-! URxvt*tab-fg:                         colour
-! URxvt*tabbar-bg:                      colour
-! URxvt*tabbar-fg:                      colour
 
 URxvt*color0:                         #282828
 URxvt*color1:                         #cc241d
@@ -68,11 +54,11 @@ URxvt*color19:                        #7c6f54
 URxvt*color20:                        #bdae93
 URxvt*color21:                        #ebdbb2R
 
-URxvt.perl-ext-common:  default,resize-font,fullscreen,matcher
+URxvt.perl-ext-common:  default,resize-font,matcher
 
 !matcher
 URxvt.url-launcher: /usr/bin/xdg-open
-URxvt.matcher.button: 1
+URxvt.matcher.button: C1
 
 !resize-font
 URxvt.keysym.C-minus:  resize-font:smaller
@@ -83,12 +69,6 @@ URxvt.resize-font.step: 1
 !clipboard
 URxvt.keysym.Control-Shift-V: eval:paste_clipboard
 URxvt.keysym.Control-Shift-C: eval:selection_to_clipboard
-
-!tabbed
-URxvt.tabbed.tabbar-fg: 4
-URxvt.tabbed.tabbar-bg: 0
-URxvt.tabbed.tab-fg: 15
-URxvt.tabbed.tab-bg: 0
 
 !carriage-return for zsh-autosuggestion \033 = ^[
 URxvt.keysym.C-Return:     \033[[CE
