@@ -203,15 +203,9 @@ exec --no-startup-id telegram-desktop
 exec --no-startup-id walc
 exec --no-startup-id mailspring
 
-# Workspace monitor assignment
-workspace $ws1 output primary
-workspace $ws2 output DVI-D-0
-workspace $ws3 output primary
-workspace $ws4 output DVI-D-0
-
 # Program assignments
-assign [class="^TelegramDesktop$"] → $ws2
-assign [class="^walc$"] → $ws2
+assign [class="^TelegramDesktop$"] → $ws3
+assign [class="^walc$"] → $ws3
 assign [class="^Mailspring$"] → $ws4
 
 # Custom keys
