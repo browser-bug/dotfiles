@@ -31,7 +31,7 @@ URxvt*highlightTextColor:             #bdae93
 
 URxvt*color0:                         #282828
 URxvt*color1:                         #cc241d
-Uxvt*color2:                         #98971a
+Uxvt*color2:                          #98971a
 URxvt*color3:                         #d79921
 URxvt*color4:                         #458588
 URxvt*color5:                         #b16286
@@ -52,7 +52,7 @@ URxvt*color17:                        #a89984
 URxvt*color18:                        #504945
 URxvt*color19:                        #7c6f54
 URxvt*color20:                        #bdae93
-URxvt*color21:                        #ebdbb2R
+URxvt*color21:                        #ebdbb2
 
 URxvt.perl-ext-common:  default,resize-font,matcher
 
