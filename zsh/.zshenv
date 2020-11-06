@@ -11,3 +11,10 @@ export PATH="$HOME/.local/bin:$PATH"
  else
    export EDITOR='nvim'
  fi
+
+# kitty updater
+export KITTY="$HOME/Development/kitty"
+export KITTY_UPDATER="$HOME/Development/kitty_updater"
+export KITTY_CACHE_DIR="$HOME/Development/kitty_updater/.cache"
+export KITTY_INSTALL_DIR="$HOME/.local"
+export UPDATE_KITTY_DAYS=3 # how often to check for updates
