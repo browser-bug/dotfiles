@@ -29,5 +29,14 @@ let g:highlightedyank_highlight_duration = 50
     "autocmd!
     "autocmd TextYankPost * silent! lua require'vim.highlight'.on_yank("IncSearch", 1000)
 "augroup END
-"vim-highlightedyank
 
+"startify
+let g:startify_bookmarks = [
+    \ '~/.config/nvim',
+    \ '~/.zsh',
+    \ '~/.config/i3',
+    \ '~/.config/i3status',
+    \ '~/.config/kitty',
+    \ ]
+let g:startify_session_dir = '~/.nvim/session'
+let g:startify_custom_header = startify#fortune#boxed()

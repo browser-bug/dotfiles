@@ -14,6 +14,7 @@ Plug 'scrooloose/nerdtree'
 Plug 'machakann/vim-highlightedyank'
 Plug 'vim-airline/vim-airline'
 Plug 'ap/vim-css-color'
+Plug 'mhinz/vim-startify'
 
 call plug#end()
 
