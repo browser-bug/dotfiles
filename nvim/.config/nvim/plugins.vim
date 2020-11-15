@@ -32,11 +32,13 @@ let g:highlightedyank_highlight_duration = 50
 
 "startify
 let g:startify_bookmarks = [
-    \ '~/.config/nvim',
-    \ '~/.zsh',
-    \ '~/.config/i3',
-    \ '~/.config/i3status',
-    \ '~/.config/kitty',
+    \ {'v': '~/.config/nvim'},
+    \ '~/.zshrc',
+    \ '~/.zshenv',
+    \ {'z': '~/.zsh'},
+    \ {'c': '~/.config/i3/config'},
+    \ '~/.config/i3status/config',
+    \ {'t': '~/.config/kitty'},
     \ ]
 let g:startify_session_dir = '~/.nvim/session'
 let g:startify_custom_header = startify#fortune#boxed()
