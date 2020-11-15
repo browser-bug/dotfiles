@@ -13,12 +13,14 @@ set nowrap
 set smartcase
 set noswapfile
 set nobackup
+set nowritebackup
 set undodir=~/.nvim/undodir
 set undofile
 set incsearch
 set scrolloff=8
 set noshowmode
 set encoding=utf-8
+set mouse=n
 
 " Give more space for displaying messages.
 set cmdheight=2
