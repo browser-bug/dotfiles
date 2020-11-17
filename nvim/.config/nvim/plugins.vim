@@ -17,6 +17,7 @@ endif
 
 "fzf
 let g:fzf_layout = { 'window': { 'width': 0.8, 'height': 0.8 } }
+let $FZF_DEFAULT_COMMAND = 'ag --hidden --ignore .git -l -g ""'
 let $FZF_DEFAULT_OPTS='--reverse'
 
 "bujo
@@ -35,6 +36,7 @@ let g:startify_bookmarks = [
     \ {'v': '~/.config/nvim'},
     \ '~/.zshrc',
     \ '~/.zshenv',
+    \ '~/.oh-my.zsh',
     \ {'z': '~/.zsh'},
     \ {'c': '~/.config/i3/config'},
     \ '~/.config/i3status/config',
