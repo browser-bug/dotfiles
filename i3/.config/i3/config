@@ -185,7 +185,10 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 
 hide_edge_borders both
+default_border normal 1
 focus_follows_mouse no
+# class                 border  backgr. text    indicator child_border
+client.focused          #45433d #7b9352 #ffffff #2e9ef4   #45433d
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
@@ -193,6 +196,10 @@ bar {
         status_command i3status
         tray_output primary
         font pango:DejaVu Sans Mono 12
+        colors {
+            # <colorclass> <border> <background> <text>
+            focused_workspace #45433d #7b9352 #ffffff
+        }
 }
 
 # Fixing tearing issue with nvidia graphics
