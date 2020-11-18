@@ -20,3 +20,8 @@ export KITTY_UPDATER="$HOME/Development/kitty-updater"
 export KITTY_CACHE_DIR="$HOME/Development/kitty-updater/.cache"
 export KITTY_INSTALL_DIR="$HOME/.local"
 export UPDATE_KITTY_DAYS=5 # how often to check for updates
+
+# virtual env nvim support
+if [[ -n $VIRTUAL_ENV && -e "${VIRTUAL_ENV}/bin/activate" ]]; then
+  source "${VIRTUAL_ENV}/bin/activate"
+fi
