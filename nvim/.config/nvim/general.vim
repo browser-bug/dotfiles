@@ -34,3 +34,6 @@ set shortmess+=c
 
 set colorcolumn=80
 highlight ColorColumn ctermbg=0 guibg=lightgrey
+
+" Remove annoying syntax error highlight on json comments
+autocmd FileType json syntax match Comment +\/\/.\+$+
