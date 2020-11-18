@@ -17,7 +17,7 @@ set $mod Mod4
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
-font pango:DejaVu Sans Mono 8
+font pango:DejaVu Sans Mono 9
 
 # The combination of xss-lock, nm-applet and pactl is a popular choice, so
 # they are included here as an example. Modify as you see fit.
@@ -209,6 +209,7 @@ exec --no-startup-id compton
 exec --no-startup-id telegram-desktop
 exec --no-startup-id walc
 exec --no-startup-id mailspring
+exec --no-startup-id teams
 
 # Workspace monitor assignment
 workspace $ws1 output primary
@@ -220,6 +221,7 @@ workspace $ws4 output DVI-D-0
 assign [class="^TelegramDesktop$"] → $ws2
 assign [class="^walc$"] → $ws2
 assign [class="^Mailspring$"] → $ws4
+assign [class="^Microsoft Teams - Preview$"] → $ws4
 
 # Custom keys
 bindsym $mod+Shift+x exec i3lock -c "#42484D"
