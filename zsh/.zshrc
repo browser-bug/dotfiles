@@ -10,3 +10,6 @@ for file in ${config_files}
 do
   source $file
 done
+
+# kitty updater
+source $KITTY_UPDATER/check_for_kitty_upgrade.sh
