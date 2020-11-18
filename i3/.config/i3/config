@@ -195,9 +195,6 @@ bar {
         font pango:DejaVu Sans Mono 12
 }
 
-# Fixing tearing issue with nvidia graphics
-exec --no-startup-id compton
-
 # Startup executions
 exec --no-startup-id telegram-desktop
 exec --no-startup-id walc
