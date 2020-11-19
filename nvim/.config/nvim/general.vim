@@ -13,12 +13,14 @@ set nowrap
 set smartcase
 set noswapfile
 set nobackup
+set nowritebackup
 set undodir=~/.nvim/undodir
 set undofile
 set incsearch
 set scrolloff=8
 set noshowmode
 set encoding=utf-8
+set mouse=n
 
 " Give more space for displaying messages.
 set cmdheight=2
@@ -32,3 +34,6 @@ set shortmess+=c
 
 set colorcolumn=80
 highlight ColorColumn ctermbg=0 guibg=lightgrey
+
+" Remove annoying syntax error highlight on json comments
+autocmd FileType json syntax match Comment +\/\/.\+$+

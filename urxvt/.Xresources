@@ -31,13 +31,13 @@ URxvt*highlightTextColor:             #bdae93
 
 URxvt*color0:                         #282828
 URxvt*color1:                         #cc241d
-Uxvt*color2:                         #98971a
+Uxvt*color2:                          #98971a
 URxvt*color3:                         #d79921
 URxvt*color4:                         #458588
 URxvt*color5:                         #b16286
 URxvt*color6:                         #689d6a
 URxvt*color7:                         #d5c4a1
-URxvt*color8:                         #ebdbb2
+URxvt*color8:                         #e2dbb2
 URxvt*color9:                         #cc241d
 URxvt*color10:                        #98971a
 URxvt*color11:                        #d79921
@@ -52,7 +52,7 @@ URxvt*color17:                        #a89984
 URxvt*color18:                        #504945
 URxvt*color19:                        #7c6f54
 URxvt*color20:                        #bdae93
-URxvt*color21:                        #ebdbb2R
+URxvt*color21:                        #ebdbb2
 
 URxvt.perl-ext-common:  default,resize-font,matcher
 

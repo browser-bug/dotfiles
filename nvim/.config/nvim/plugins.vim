@@ -17,6 +17,7 @@ endif
 
 "fzf
 let g:fzf_layout = { 'window': { 'width': 0.8, 'height': 0.8 } }
+let $FZF_DEFAULT_COMMAND = 'ag --hidden --ignore .git -l -g ""'
 let $FZF_DEFAULT_OPTS='--reverse'
 
 "bujo
@@ -29,5 +30,17 @@ let g:highlightedyank_highlight_duration = 50
     "autocmd!
     "autocmd TextYankPost * silent! lua require'vim.highlight'.on_yank("IncSearch", 1000)
 "augroup END
-"vim-highlightedyank
 
+"startify
+let g:startify_bookmarks = [
+    \ {'v': '~/.config/nvim'},
+    \ '~/.zshrc',
+    \ '~/.zshenv',
+    \ '~/.oh-my.zsh',
+    \ {'z': '~/.zsh'},
+    \ {'c': '~/.config/i3/config'},
+    \ '~/.config/i3status/config',
+    \ {'t': '~/.config/kitty'},
+    \ ]
+let g:startify_session_dir = '~/.nvim/session'
+let g:startify_custom_header = startify#fortune#boxed()
