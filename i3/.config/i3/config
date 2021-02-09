@@ -17,7 +17,7 @@ set $mod Mod4
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
-font pango:DejaVu Sans Mono 9
+font pango:DejaVu Sans Mono, JetBrains Mono 9
 
 # The combination of xss-lock, nm-applet and pactl is a popular choice, so
 # they are included here as an example. Modify as you see fit.
@@ -206,16 +206,16 @@ bar {
 exec --no-startup-id compton
 
 # Startup executions
-exec --no-startup-id telegram-desktop
-exec --no-startup-id walc
 exec --no-startup-id mailspring
+exec --no-startup-id telegram-desktop
 exec --no-startup-id teams
+exec --no-startup-id walc
 
 # Workspace monitor assignment
 workspace $ws1 output primary
-workspace $ws2 output DVI-D-0
+workspace $ws2 output DVI-I-1
 workspace $ws3 output primary
-workspace $ws4 output DVI-D-0
+workspace $ws4 output DVI-I-1
 
 # Program assignments
 assign [class="^TelegramDesktop$"] → $ws2
@@ -228,4 +228,5 @@ bindsym $mod+Shift+x exec i3lock -c "#42484D"
 bindsym $mod+Ctrl+s exec systemctl suspend
 bindsym $mod+Ctrl+Shift+s exec systemctl poweroff
 bindsym Mod1+Tab exec rofi -show window
+bindsym $mod+Shift+S exec bash -c "sleep 0.1 && mate-screenshot -a"
 
