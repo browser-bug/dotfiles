@@ -5,6 +5,7 @@ export PATH="/usr/local/bin/margot_heel_cli:$PATH"
 export PATH="$HOME/bin:$PATH"
 export PATH="$HOME/.local/bin:$PATH"
 export PATH="$HOME/.cargo/bin:$PATH"
+export PATH="/usr/local/texlive/2020/bin/x86_64-linux:$PATH"
 export JAVA_HOME="/usr/lib/jvm/java-11-openjdk-amd64"
 
 # Preferred editor for local and remote sessions

@@ -1,11 +1,20 @@
 "gruvbox
-let g:gruvbox_contrast_dark = 'medium'
-let g:gruvbox_invert_selection='0'
-if exists('+termguicolors')
-    let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
-    let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
-endif
-colorscheme gruvbox
+"let g:gruvbox_contrast_dark = 'medium'
+"let g:gruvbox_invert_selection='0'
+"if exists('+termguicolors')
+    "let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+    "let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+"endif
+"colorscheme gruvbox
+
+let g:dracula_colorterm = 0
+colorscheme dracula
+sign define vimspectorBP         text=\ ● texthl=DraculaOrange
+sign define vimspectorBPCond     text=\ ◆ texthl=DraculaOrange
+sign define vimspectorBPDisabled text=\ ● texthl=LineNr
+sign define vimspectorPC         text=\ ▶ texthl=DraculaGreen linehl=CursorLine
+sign define vimspectorPCBP       text=●▶  texthl=DraculaGreen linehl=CursorLine
+
 
 "vim-airline powerline fix
 let g:airline_powerline_fonts = 1
@@ -22,6 +31,7 @@ let $FZF_DEFAULT_OPTS='--reverse'
 
 "bujo
 let g:bujo#todo_file_path = $HOME . "/.cache/bujo"
+let g:bujo#window_width = 80
 
 "highlighted_yank
 let g:highlightedyank_highlight_duration = 50
@@ -44,3 +54,7 @@ let g:startify_bookmarks = [
     \ ]
 let g:startify_session_dir = '~/.nvim/session'
 let g:startify_custom_header = startify#fortune#boxed()
+let g:startify_change_to_dir = 0
+
+"headerguard
+let g:headerguard_use_cpp_comments=1

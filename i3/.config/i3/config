@@ -17,7 +17,7 @@ set $mod Mod4
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
-font pango:DejaVu Sans Mono 9
+font pango:DejaVu Sans Mono, JetBrains Mono 9
 
 # The combination of xss-lock, nm-applet and pactl is a popular choice, so
 # they are included here as an example. Modify as you see fit.
@@ -219,4 +219,5 @@ bindsym $mod+Shift+x exec i3lock -c "#42484D"
 bindsym $mod+Ctrl+s exec systemctl suspend
 bindsym $mod+Ctrl+Shift+s exec systemctl poweroff
 bindsym Mod1+Tab exec rofi -show window
+bindsym $mod+Shift+S exec bash -c "sleep 0.1 && mate-screenshot -a"
 

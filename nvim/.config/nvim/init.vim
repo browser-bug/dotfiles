@@ -9,12 +9,19 @@ Plug 'junegunn/fzf.vim'
 Plug 'vuciv/vim-bujo'
 Plug 'tpope/vim-dispatch'
 Plug 'gruvbox-community/gruvbox'
+Plug 'dracula/vim', { 'as': 'dracula' }
 Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/nerdtree'
 Plug 'machakann/vim-highlightedyank'
 Plug 'vim-airline/vim-airline'
-Plug 'ap/vim-css-color'
 Plug 'mhinz/vim-startify'
+Plug 'octol/vim-cpp-enhanced-highlight'
+Plug 'vim-scripts/headerguard'
+Plug 'lervag/vimtex'
+Plug 'ryanoasis/vim-devicons'
+" Debugger Plugins
+Plug 'puremourning/vimspector'
+Plug 'szw/vim-maximizer'
 
 call plug#end()
 
