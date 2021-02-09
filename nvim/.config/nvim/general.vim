@@ -1,13 +1,14 @@
-syntax on
+syntax enable
 
 set relativenumber
 set hidden
 set noerrorbells
-set tabstop=4 softtabstop=4
-set shiftwidth=4
+set tabstop=2 softtabstop=2
+set shiftwidth=2
 set expandtab
 set splitright
 set smartindent
+set linebreak
 set nu
 set nowrap
 set smartcase
@@ -32,8 +33,16 @@ set updatetime=50
 " Don't pass messages to |ins-completion-menu|.
 set shortmess+=c
 
-set colorcolumn=80
+set colorcolumn=140
 highlight ColorColumn ctermbg=0 guibg=lightgrey
 
 " Remove annoying syntax error highlight on json comments
 autocmd FileType json syntax match Comment +\/\/.\+$+
+
+" Open help window always on the bottom
+autocmd FileType help wincmd J
+
+" Show invisible characters
+set list
+set listchars=tab:»·,eol:↲,nbsp:␣,extends:…,precedes:<,extends:>,trail:·
+"set listchars=tab:»·,eol:↲,nbsp:␣,extends:…,space:␣,precedes:<,extends:>,trail:·
