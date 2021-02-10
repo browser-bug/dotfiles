@@ -22,6 +22,8 @@ let g:airline_powerline_fonts = 1
 "vimtex
 let g:vimtex_compiler_progname = 'nvr'
 let g:vimtex_view_method = 'zathura'
+"let g:vimtex_quickfix_mode=0
+let g:vimtex_mappings_enabled = 0
 
 "ripgrep
 if executable('rg')
