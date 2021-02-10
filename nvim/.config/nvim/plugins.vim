@@ -19,6 +19,10 @@ sign define vimspectorPCBP       text=●▶  texthl=DraculaGreen linehl=CursorL
 "vim-airline powerline fix
 let g:airline_powerline_fonts = 1
 
+"vimtex
+let g:vimtex_compiler_progname = 'nvr'
+let g:vimtex_view_method = 'zathura'
+
 "ripgrep
 if executable('rg')
     let g:rg_derive_root='true'
