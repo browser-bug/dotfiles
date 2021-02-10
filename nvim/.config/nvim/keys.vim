@@ -116,9 +116,9 @@ nnoremap <leader>u :UndotreeToggle<CR>
 nnoremap <leader>pv :NERDTreeToggle<CR>
 
 "Vimtex
-nnoremap <leader>xb :VimtexCompile<CR>
+nnoremap <leader>xx :VimtexCompile<CR>
+nnoremap <leader>xc :VimtexClean<CR>
 nnoremap <leader>xi :VimtexTocToggle<CR>
 nnoremap <leader>xp :VimtexView<CR>
-" nnoremap <leader>xx :VimtexClean<CR>
-nnoremap <leader>xc :VimtexCountWords<CR>
-" nnoremap <leader>xl :VimtexLabelsToggle<CR>
+"nnoremap <leader>xc :VimtexCountWords<CR>
+"nnoremap <leader>xl :VimtexLabelsToggle<CR>
