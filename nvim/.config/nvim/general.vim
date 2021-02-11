@@ -45,4 +45,3 @@ autocmd FileType help wincmd J
 " Show invisible characters
 set list
 set listchars=tab:»·,eol:↲,nbsp:␣,extends:…,precedes:<,extends:>,trail:·
-"set listchars=tab:»·,eol:↲,nbsp:␣,extends:…,space:␣,precedes:<,extends:>,trail:·
