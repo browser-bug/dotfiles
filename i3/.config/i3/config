@@ -210,6 +210,7 @@ exec --no-startup-id mailspring
 exec --no-startup-id telegram-desktop
 exec --no-startup-id teams
 exec --no-startup-id walc
+exec --no-startup-id gitter
 
 # Workspace monitor assignment
 workspace $ws1 output primary
