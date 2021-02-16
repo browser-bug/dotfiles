@@ -19,7 +19,8 @@ xnoremap <leader>2 "+
 " Use tab for %
 nnoremap <tab> %
 vnoremap <tab> %
-" Spellcheck toggles
+" Spellcheck
+nnoremap <C-f> a<C-x>s
 nnoremap <leader>se :setlocal spell! spelllang=en_us<CR>
 nnoremap <leader>si :setlocal spell! spelllang=it<CR>
 
