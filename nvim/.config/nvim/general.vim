@@ -45,3 +45,7 @@ autocmd FileType help wincmd J
 " Show invisible characters
 set list
 set listchars=tab:»·,eol:↲,nbsp:␣,extends:…,precedes:<,extends:>,trail:·
+
+" Set the maximum number of items to show in the popup menu for ins.
+" completion
+set pumheight=10

@@ -21,8 +21,10 @@ let g:airline_powerline_fonts = 1
 
 "vimtex
 let g:vimtex_view_method = 'zathura'
-"let g:vimtex_quickfix_mode=0
 let g:vimtex_mappings_enabled = 0
+let g:vimtex_compiler_latexmk = {
+      \ 'build_dir' : './build'
+      \ }
 
 "ripgrep
 if executable('rg')
@@ -59,6 +61,10 @@ let g:startify_bookmarks = [
     \ ]
 let g:startify_session_dir = '~/.nvim/session'
 let g:startify_session_persistence = 1
+let g:startify_session_before_save = [
+        \ 'silent! :tabdo NERDTreeClose',
+        \ 'silent! :bufdo NERDTreeClose'
+        \ ]
 let g:startify_custom_header = startify#fortune#boxed()
 let g:startify_change_to_vcs_root = 1
 let g:startify_change_to_dir = 0
