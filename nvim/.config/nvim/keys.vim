@@ -21,8 +21,13 @@ nnoremap <tab> %
 vnoremap <tab> %
 " Spellcheck
 nnoremap <C-f> a<C-x>s
-nnoremap <leader>se :setlocal spell! spelllang=en_us<CR>
+nnoremap <leader>se :setlocal spell! spelllang=en<CR>
 nnoremap <leader>si :setlocal spell! spelllang=it<CR>
+
+" Scholarref
+"insert reference into current buffer
+nnoremap <leader>sr :r !scholarref<space>
+
 
 "FZF
 nnoremap <Leader>pf :Files<CR>
@@ -121,5 +126,4 @@ nnoremap <leader>xx :VimtexCompile<CR>
 nnoremap <leader>xc :VimtexClean<CR>
 nnoremap <leader>xi :VimtexTocToggle<CR> \| <C-w>h
 nnoremap <leader>xp :VimtexView<CR>
-"nnoremap <leader>xc :VimtexCountWords<CR>
-"nnoremap <leader>xl :VimtexLabelsToggle<CR>
+nnoremap <leader>xm :VimtexContextMenu<CR>

@@ -39,6 +39,11 @@ highlight ColorColumn ctermbg=0 guibg=lightgrey
 " Remove annoying syntax error highlight on json comments
 autocmd FileType json syntax match Comment +\/\/.\+$+
 
+" Default settings for tex files
+autocmd FileType tex
+      \ set textwidth=80
+      \| setlocal spell! spelllang=en
+
 " Open help window always on the bottom
 autocmd FileType help wincmd J
 
