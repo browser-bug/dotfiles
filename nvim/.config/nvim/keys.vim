@@ -21,8 +21,12 @@ nnoremap <tab> %
 vnoremap <tab> %
 " Spellcheck
 nnoremap <C-f> a<C-x>s
-nnoremap <leader>se :setlocal spell! spelllang=en_us<CR>
+nnoremap <leader>se :setlocal spell! spelllang=en<CR>
 nnoremap <leader>si :setlocal spell! spelllang=it<CR>
+
+" Scholarref
+"insert reference into current buffer
+nnoremap <leader>sr :r !scholarref<space>
 
 "FZF
 nnoremap <Leader>pf :Files<CR>

@@ -25,6 +25,9 @@ let g:vimtex_mappings_enabled = 0
 let g:vimtex_compiler_latexmk = {
       \ 'build_dir' : './build'
       \ }
+let g:vimtex_quickfix_ignore_filters = [
+      \ 'Missing ".*" in ".*"',
+      \]
 
 "ripgrep
 if executable('rg')
