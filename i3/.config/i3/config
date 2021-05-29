@@ -210,7 +210,6 @@ exec --no-startup-id mailspring
 exec --no-startup-id telegram-desktop
 exec --no-startup-id teams
 exec --no-startup-id walc
-exec --no-startup-id gitter
 
 # Workspace monitor assignment
 workspace $ws1 output primary
@@ -219,8 +218,8 @@ workspace $ws3 output primary
 workspace $ws4 output DVI-I-1
 
 # Program assignments
-assign [class="^TelegramDesktop$"] → $ws2
 assign [class="^walc$"] → $ws2
+assign [class="^TelegramDesktop$"] → $ws2
 assign [class="^Mailspring$"] → $ws4
 assign [class="^Microsoft Teams - Preview$"] → $ws4
 
@@ -230,4 +229,3 @@ bindsym $mod+Ctrl+s exec systemctl suspend
 bindsym $mod+Ctrl+Shift+s exec systemctl poweroff
 bindsym Mod1+Tab exec rofi -show window
 bindsym $mod+Shift+S exec bash -c "sleep 0.1 && mate-screenshot -a"
-
