@@ -78,6 +78,9 @@ inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 " clangd switch header/source files
 nnoremap <leader>gg :CocCommand clangd.switchSourceHeader<CR>
 
+" Prettier format
+command! -nargs=0 Prettier :CocCommand prettier.formatFile
+
 " Add `:Format` command to format current buffer.
 command! -nargs=0 Format :call CocAction('format')
 " Add `:Fold` command to fold current buffer.

@@ -20,6 +20,7 @@ set undofile
 set incsearch
 set scrolloff=8
 set noshowmode
+set inccommand=nosplit
 set encoding=utf-8
 set mouse=n
 

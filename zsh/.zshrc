@@ -11,6 +11,10 @@ done
 # check of kitty updates
 source $KITTY_UPDATER/check_for_kitty_upgrade.sh
 
+# kubectl autocompletion
+source <(kubectl completion zsh)
+complete -F __start_kubectl kctl
+
 # zsh-syntax-highlighting (always source LAST!)
 source $HOME/.zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
@@ -18,3 +22,8 @@ source $HOME/.zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 if [[ $TERM == "xterm-kitty" ]]; then
     ZSH_HIGHLIGHT_STYLES[comment]="fg=#ebdbb2,bold"
 fi
+
+
+# BEGIN_KITTY_SHELL_INTEGRATION
+if test -e "$HOME/.local/lib/kitty/shell-integration/kitty.zsh"; then source "$HOME/.local/lib/kitty/shell-integration/kitty.zsh"; fi
+# END_KITTY_SHELL_INTEGRATION
