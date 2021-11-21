@@ -6,9 +6,20 @@ export PATH="$HOME/bin:$PATH"
 export PATH="$HOME/.local/bin:$PATH"
 export PATH="$HOME/.local/texlive/2020/bin/x86_64-linux:$PATH"
 export PATH="$HOME/.cargo/bin:$PATH"
+export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
+export PATH="$NODE_VERSIONS/node-v10.24.1/bin:$PATH"
 export MANPATH="$HOME/.local/texlive/2020/texmf-dist/doc/man:$MANPATH"
 export INFOPATH="$HOME/.local/texlive/2020/texmf-dist/doc/info:$INFOPATH"
 export JAVA_HOME="/usr/lib/jvm/java-11-openjdk-amd64"
+# Android SDK Tools PATH
+export ANDROID_HOME="$HOME/Android/Sdk"
+export PATH="$ANDROID_HOME/tools:$PATH"
+export PATH="$ANDROID_HOME/emulator:$PATH"
+export PATH="$ANDROID_HOME/platform-tools:$PATH"
+export CAPACITOR_ANDROID_STUDIO_PATH="/snap/bin/android-studio"
+# Gradle
+export GRADLE_HOME=/opt/gradle/latest
+export PATH=${GRADLE_HOME}/bin:${PATH}
 
 # Preferred editor for local and remote sessions
  if [[ -n $SSH_CONNECTION ]]; then
