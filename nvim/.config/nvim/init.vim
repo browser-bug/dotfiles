@@ -17,7 +17,9 @@ Plug 'vim-airline/vim-airline'
 Plug 'mhinz/vim-startify'
 Plug 'octol/vim-cpp-enhanced-highlight'
 Plug 'vim-scripts/headerguard'
+Plug 'mzlogin/vim-markdown-toc'
 Plug 'lervag/vimtex'
+Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
 Plug 'ryanoasis/vim-devicons'
 " Debugger Plugins
 Plug 'puremourning/vimspector'
