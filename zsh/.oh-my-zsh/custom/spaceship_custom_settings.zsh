@@ -1,0 +1,33 @@
+# Char
+SPACESHIP_CHAR_SYMBOL='❯ '
+
+# Time
+SPACESHIP_TIME_SHOW=true
+
+# Dir
+SPACESHIP_DIR_TRUNC=5
+SPACESHIP_DIR_TRUNC_REPO=false
+
+# Venv
+SPACESHIP_VENV_SYMBOL=' '
+
+# Prompt
+SPACESHIP_PROMPT_ADD_NEWLINE=false
+#SPACESHIP_PROMPT_SEPARATE_LINE=false
+
+SPACESHIP_PROMPT_ORDER=(
+  user
+  host
+  dir
+  git
+  venv
+  exec_time
+  line_sep
+  exit_code
+  char
+)
+
+# RPROMPT
+SPACESHIP_RPROMPT_ORDER=(
+  time
+)
