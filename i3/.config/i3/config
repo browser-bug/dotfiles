@@ -203,11 +203,12 @@ bar {
 }
 
 # Startup executions
-exec --no-startup-id telegram-desktop
-exec --no-startup-id walc
-exec --no-startup-id mailspring
+#exec --no-startup-id telegram-desktop
+#exec --no-startup-id mailspring
+exec --no-startup-id thunderbird
 #exec --no-startup-id teams
 exec --no-startup-id discord
+exec --no-startup-id ClickUp.AppImage
 
 # Assign workspace to monitors
 workspace 1 output primary
@@ -217,9 +218,11 @@ workspace 4 output HDMI-0
 # Program assignments
 assign [class="^TelegramDesktop$"] → $ws3
 assign [class="^walc$"] → $ws3
-assign [class="^Mailspring$"] → $ws3
-assign [class="^Discord$"] → $ws3
+assign [class="^Mailspring$"] → $ws4
+assign [class="^Thunderbird$"] → $ws4
+assign [class="^discord$"] → $ws4
 #assign [class="^Microsoft Teams - Preview$"] → $ws4
+assign [class="^ClickUp$"] → $ws4
 
 # Custom keys
 bindsym $mod+Shift+x exec i3lock -c "#42484D"
@@ -227,4 +230,20 @@ bindsym $mod+Ctrl+s exec systemctl suspend
 bindsym $mod+Ctrl+Shift+s exec systemctl poweroff
 bindsym Mod1+Tab exec rofi -show window -show-icons
 bindsym $mod+Shift+S exec bash -c "sleep 0.1 && mate-screenshot -a"
+#bindsym $mod+Shift+S exec bash -c "shutter -s"
+bindsym $mod+P exec gpaste-client ui
+
+# Set window icon for all windows
+for_window [all] title_window_icon on
+
+# Select which programs to open in floating mode by default
+for_window [class="Shutter"] floating enable
+for_window [title="^Android Emulator"] floating enable
+for_window [class="Pick-colour-picker"] floating enable
+for_window [class="Mate-appearance-properties"] floating enable
+for_window [class="^Thunderbird$" instance="^Calendar$"] floating enable
+for_window [class="^Thunderbird$" instance="^Msgcompose$"] floating enable
+
+# Switch to urgent workspace when clicking notification
+focus_on_window_activation focus
 
