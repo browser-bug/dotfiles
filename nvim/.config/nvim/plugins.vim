@@ -1,19 +1,19 @@
 "gruvbox
-"let g:gruvbox_contrast_dark = 'medium'
-"let g:gruvbox_invert_selection='0'
-"if exists('+termguicolors')
-    "let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
-    "let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
-"endif
-"colorscheme gruvbox
+let g:gruvbox_contrast_dark = 'medium'
+let g:gruvbox_invert_selection='0'
+if exists('+termguicolors')
+    let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+    let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+endif
+colorscheme gruvbox
 
-let g:dracula_colorterm = 0
-colorscheme dracula
-sign define vimspectorBP         text=\ ● texthl=DraculaOrange
-sign define vimspectorBPCond     text=\ ◆ texthl=DraculaOrange
-sign define vimspectorBPDisabled text=\ ● texthl=LineNr
-sign define vimspectorPC         text=\ ▶ texthl=DraculaGreen linehl=CursorLine
-sign define vimspectorPCBP       text=●▶  texthl=DraculaGreen linehl=CursorLine
+"let g:dracula_colorterm = 0
+"colorscheme dracula
+"sign define vimspectorBP         text=\ ● texthl=DraculaOrange
+"sign define vimspectorBPCond     text=\ ◆ texthl=DraculaOrange
+"sign define vimspectorBPDisabled text=\ ● texthl=LineNr
+"sign define vimspectorPC         text=\ ▶ texthl=DraculaGreen linehl=CursorLine
+"sign define vimspectorPCBP       text=●▶  texthl=DraculaGreen linehl=CursorLine
 
 
 "vim-airline powerline fix
@@ -69,8 +69,8 @@ let g:startify_session_before_save = [
         \ 'silent! :bufdo NERDTreeClose'
         \ ]
 let g:startify_custom_header = startify#fortune#boxed()
-let g:startify_change_to_vcs_root = 1
-let g:startify_change_to_dir = 0
+"let g:startify_change_to_vcs_root = 1
+"let g:startify_change_to_dir = 0
 
 "headerguard
 let g:headerguard_use_cpp_comments=1

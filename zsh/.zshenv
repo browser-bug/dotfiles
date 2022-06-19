@@ -1,6 +1,7 @@
 # .zshenv is always sourced, define here exported variables that should
 # be available to other programs.
 
+#eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 export PATH="/usr/local/bin/margot_heel_cli:$PATH"
 export PATH="$HOME/bin:$PATH"
 export PATH="$HOME/.local/bin:$PATH"
@@ -8,6 +9,7 @@ export PATH="$HOME/.local/texlive/2020/bin/x86_64-linux:$PATH"
 export PATH="$HOME/.cargo/bin:$PATH"
 export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
 export PATH="$NODE_VERSIONS/node-v10.24.1/bin:$PATH"
+export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
 export MANPATH="$HOME/.local/texlive/2020/texmf-dist/doc/man:$MANPATH"
 export INFOPATH="$HOME/.local/texlive/2020/texmf-dist/doc/info:$INFOPATH"
 export JAVA_HOME="/usr/lib/jvm/java-11-openjdk-amd64"
