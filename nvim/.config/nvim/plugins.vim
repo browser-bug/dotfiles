@@ -15,6 +15,8 @@ colorscheme gruvbox
 "sign define vimspectorPC         text=\ ▶ texthl=DraculaGreen linehl=CursorLine
 "sign define vimspectorPCBP       text=●▶  texthl=DraculaGreen linehl=CursorLine
 
+"Colorizer
+let g:colorizer_auto_filetype='css,html,rasi'
 
 "vim-airline powerline fix
 let g:airline_powerline_fonts = 1

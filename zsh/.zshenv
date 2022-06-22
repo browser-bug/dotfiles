@@ -1,5 +1,6 @@
 # .zshenv is always sourced, define here exported variables that should
 # be available to other programs.
+skip_global_compinit=1
 
 #eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 export PATH="/usr/local/bin/margot_heel_cli:$PATH"

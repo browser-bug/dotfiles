@@ -1,5 +1,9 @@
+# For benchmarking purposes uncomment this line
+#zmodload zsh/zprof
+
 # oh-my-zsh settings
 source ~/.oh-my.zsh
+
 
 # load zsh config files
 config_files=(~/.zsh/**/*.zsh(N))
@@ -15,22 +19,24 @@ source $KITTY_UPDATER/check_for_kitty_upgrade.sh
 source <(kubectl completion zsh)
 complete -F __start_kubectl kctl
 
-# minikube autocompletion
-source <(minikube completion zsh)
+# minikube autocompletion (commented since it took too much time during startup script)
+#source <(minikube completion zsh)
 
 # zsh-syntax-highlighting (always source LAST!)
 source $HOME/.zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-
-# pyenv
-#eval "$(pyenv init -)"
-
-# perl
-eval $(perl -I$HOME/perl5/lib/perl5 -Mlocal::lib)
-
 # hotfix for kitty terminal and zsh-syntax-highlight comment coloring
 if [[ $TERM == "xterm-kitty" ]]; then
     ZSH_HIGHLIGHT_STYLES[comment]="fg=#ebdbb2,bold"
 fi
+
+# pyenv
+#eval "$(pyenv init -)"
+
+# direnv
+eval "$(direnv hook zsh)"
+
+# perl
+eval $(perl -I$HOME/perl5/lib/perl5 -Mlocal::lib)
 
 
 # BEGIN_KITTY_SHELL_INTEGRATION
@@ -52,3 +58,5 @@ fi
 unset __conda_setup
 # <<< conda initialize <<<
 
+# For benchmarking purposes uncomment this line
+#zprof

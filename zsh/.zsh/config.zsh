@@ -15,5 +15,3 @@ setopt APPEND_HISTORY   # adds history
 bindkey '^H' backward-kill-word
 bindkey '^[[3^' kill-word
 
-# direnv
-eval "$(direnv hook zsh)"
