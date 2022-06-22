@@ -1,3 +1,0 @@
-rofi.modi: drun,window,run
-rofi.lines: 8
-rofi.theme: /usr/share/rofi/themes/gruvbox-dark.rasi
