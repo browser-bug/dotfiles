@@ -27,7 +27,7 @@ font pango:DejaVu Sans Mono, JetBrains Mono 9
 exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 
 # Start window compositor (for blurring windows, transparency, fixing other things related...)
-exec --no-startup-id picom --experimental-backends --backend glx
+exec --no-startup-id picom
 
 # NetworkManager is the most popular way to manage wireless networks on Linux,
 # and nm-applet is a desktop environment-independent system tray GUI for it.
@@ -180,18 +180,28 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
+# General Settings
 hide_edge_borders both
 default_border normal 1
 focus_follows_mouse no
+# Switch to urgent workspace when clicking notification
+focus_on_window_activation focus
+
 # class                 border  backgr. text    indicator child_border
 client.focused          #45433d #7b9352 #ffffff #2e9ef4   #45433d
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
+        mode dock
+        #output eDP
+        #output HDMI-A-0
+        #output DisplayPort-0
+        #output DisplayPort-1
+
         status_command i3status
         tray_output primary
-        font pango:DejaVu Sans Mono 12
+        font pango:DejaVu Sans Mono 9
         colors {
             # <colorclass> <border> <background> <text>
             focused_workspace #45433d #7b9352 #ffffff
@@ -200,11 +210,10 @@ bar {
 
 # Startup executions
 #exec --no-startup-id telegram-desktop
-#exec --no-startup-id mailspring
 exec --no-startup-id thunderbird
-#exec --no-startup-id teams
 exec --no-startup-id discord
-exec --no-startup-id ClickUp.AppImage
+#exec --no-startup-id ClickUp.AppImage
+exec --no-startup-id google-chat-electron
 
 # Assign workspace to monitors
 workspace 1 output primary
@@ -217,8 +226,8 @@ assign [class="^walc$"] → $ws3
 assign [class="^Mailspring$"] → $ws4
 assign [class="^Thunderbird$"] → $ws4
 assign [class="^discord$"] → $ws4
-#assign [class="^Microsoft Teams - Preview$"] → $ws4
 assign [class="^ClickUp$"] → $ws4
+assign [class="^google-chat-electron$"] → $ws4
 
 # Custom keys
 bindsym $mod+Shift+x exec i3lock -c "#42484D"
@@ -240,6 +249,4 @@ for_window [class="Mate-appearance-properties"] floating enable
 for_window [class="^Thunderbird$" instance="^Calendar$"] floating enable
 for_window [class="^Thunderbird$" instance="^Msgcompose$"] floating enable
 
-# Switch to urgent workspace when clicking notification
-focus_on_window_activation focus
 
