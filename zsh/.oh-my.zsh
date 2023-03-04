@@ -7,14 +7,23 @@ export SPACESHIP_ROOT=$ZSH/custom/themes/spaceship-prompt
 # load a random theme each time oh-my-zsh is loaded, in which c
 # to know which specific one was loaded, run: echo $RANDOM_THEM
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-ZSH_THEME="spaceship"
+#ZSH_THEME="spaceship"
+ZSH_THEME="powerlevel10k/powerlevel10k"
 
 # Which plugins would you like to load?
 # Standard plugins can be found in $ZSH/plugins/
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(zsh-autosuggestions git docker)
+plugins=(
+  git
+  docker
+  z
+  fzf
+  zsh-autosuggestions
+  zsh-syntax-highlighting
+  #zsh-asdf-direnv
+)
 
 source $ZSH/oh-my-zsh.sh
 

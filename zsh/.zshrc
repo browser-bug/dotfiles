@@ -1,9 +1,21 @@
 # For benchmarking purposes uncomment this line
 #zmodload zsh/zprof
 
+(( ${+commands[direnv]} )) && emulate zsh -c "$(direnv export zsh)"
+
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
+(( ${+commands[direnv]} )) && emulate zsh -c "$(direnv hook zsh)"
+
+export GPG_TTY=$TTY
+
 # oh-my-zsh settings
 source ~/.oh-my.zsh
-
 
 # load zsh config files
 config_files=(~/.zsh/**/*.zsh(N))
@@ -19,25 +31,11 @@ source $KITTY_UPDATER/check_for_kitty_upgrade.sh
 source <(kubectl completion zsh)
 complete -F __start_kubectl kctl
 
-# minikube autocompletion (commented since it took too much time during startup script)
-#source <(minikube completion zsh)
-
-# zsh-syntax-highlighting (always source LAST!)
-source $HOME/.zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-# hotfix for kitty terminal and zsh-syntax-highlight comment coloring
-if [[ $TERM == "xterm-kitty" ]]; then
-    ZSH_HIGHLIGHT_STYLES[comment]="fg=#ebdbb2,bold"
-fi
-
-# pyenv
-#eval "$(pyenv init -)"
-
-# direnv
-eval "$(direnv hook zsh)"
+# brew
+eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 
 # perl
 eval $(perl -I$HOME/perl5/lib/perl5 -Mlocal::lib)
-
 
 # BEGIN_KITTY_SHELL_INTEGRATION
 if test -e "$HOME/.local/lib/kitty/shell-integration/kitty.zsh"; then source "$HOME/.local/lib/kitty/shell-integration/kitty.zsh"; fi
@@ -58,5 +56,34 @@ fi
 unset __conda_setup
 # <<< conda initialize <<<
 
+# pyenv
+export PYENV_ROOT="$HOME/.pyenv"
+command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"
+
+# nvm
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+# Advanced customization of fzf options via _fzf_comprun function
+# - The first argument to the function is the name of the command.
+# - You should make sure to pass the rest of the arguments to fzf.
+_fzf_comprun() {
+  local command=$1
+  shift
+
+  case "$command" in
+    cd)           fzf --preview 'tree -C {} | head -200'   "$@" ;;
+    export|unset) fzf --preview "eval 'echo \$'{}"         "$@" ;;
+    ssh)          fzf --preview 'dig {}'                   "$@" ;;
+    *)            fzf --preview 'bat -n --color=always {}' "$@" ;;
+  esac
+}
+
 # For benchmarking purposes uncomment this line
 #zprof
+
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
