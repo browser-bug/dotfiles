@@ -9,11 +9,10 @@ SPACESHIP_DIR_TRUNC=5
 SPACESHIP_DIR_TRUNC_REPO=false
 
 # Venv
-SPACESHIP_VENV_SYMBOL=' '
+SPACESHIP_VENV_SYMBOL='🐍 '
 
 # Prompt
 SPACESHIP_PROMPT_ADD_NEWLINE=false
-#SPACESHIP_PROMPT_SEPARATE_LINE=false
 
 SPACESHIP_PROMPT_ORDER=(
   user
@@ -21,6 +20,7 @@ SPACESHIP_PROMPT_ORDER=(
   dir
   git
   venv
+  node
   exec_time
   line_sep
   exit_code
