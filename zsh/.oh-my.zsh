@@ -22,7 +22,6 @@ plugins=(
   fzf
   zsh-autosuggestions
   zsh-syntax-highlighting
-  #zsh-asdf-direnv
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -40,17 +39,3 @@ else
   }
   PS1='$(show_virtual_env)'$PS1
 fi
-
-
-# Check the times of the plugins that were defined in ~/.zshrc
-#for plugin ($plugins); do
-  #timer=$(($(date +%s%N)/1000000))
-  #if [ -f $ZSH_CUSTOM/plugins/$plugin/$plugin.plugin.zsh ]; then
-    #source $ZSH_CUSTOM/plugins/$plugin/$plugin.plugin.zsh
-  #elif [ -f $ZSH/plugins/$plugin/$plugin.plugin.zsh ]; then
-    #source $ZSH/plugins/$plugin/$plugin.plugin.zsh
-  #fi
-  #now=$(($(date +%s%N)/1000000))
-  #elapsed=$(($now-$timer))
-  #echo $elapsed":" $plugin
-#done
