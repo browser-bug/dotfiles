@@ -1,6 +1,9 @@
 # For benchmarking purposes uncomment this line
 #zmodload zsh/zprof
 
+# oh-my-zsh settings
+source $HOME/.oh-my.zsh
+
 # load zsh config files first
 config_files=(~/.zsh/**/*.zsh(N))
 for file in ${config_files}
@@ -8,41 +11,15 @@ do
   source $file
 done
 
-# oh-my-zsh settings
-# Change how often to auto-update (in days).
-export UPDATE_ZSH_DAYS=7
-
-# Path to your oh-my-zsh installation.
-export ZSH=$HOME/.oh-my-zsh
-
-# Set name of the theme to load --- if set to "random", it will
-# load a random theme each time oh-my-zsh is loaded, in which c
-# to know which specific one was loaded, run: echo $RANDOM_THEM
-# See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-ZSH_THEME="powerlevel10k/powerlevel10k"
-
-# Which plugins would you like to load?
-# Standard plugins can be found in $ZSH/plugins/
-# Custom plugins may be added to $ZSH_CUSTOM/plugins/
-# Example format: plugins=(rails git textmate ruby lighthouse)
-# Add wisely, as too many plugins slow down shell startup.
-plugins=(
-  git
-  docker
-  z
-  fzf
-  zsh-autosuggestions
-  zsh-syntax-highlighting
-  # asdf
-  #zsh-asdf-direnv
-)
-
-source $ZSH/oh-my-zsh.sh
-
-# check of kitty updates
-source $KITTY_UPDATER/check_for_kitty_upgrade.sh
-
-(( ${+commands[direnv]} )) && emulate zsh -c "$(direnv export zsh)"
+# asdf configuration
+ASDF_DIR="${HOME}/.asdf"
+ASDF_BIN="${ASDF_DIR}/bin"
+[[ ":$PATH:" == *":${ASDF_BIN}:"* ]] && PATH="${PATH//$ASDF_BIN:/}"
+PATH="${ASDF_BIN}:$PATH"
+# append completions to fpath
+fpath=(${ASDF_DIR}/completions $fpath)
+# initialise completions with ZSH's compinit
+autoload -Uz compinit && compinit
 
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
@@ -50,10 +27,6 @@ source $KITTY_UPDATER/check_for_kitty_upgrade.sh
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
-
-(( ${+commands[direnv]} )) && emulate zsh -c "$(direnv hook zsh)"
-
-export GPG_TTY=$TTY
 
 # fzf
 export FZF_CTRL_R_OPTS="
@@ -84,16 +57,6 @@ _fzf_comprun() {
   esac
 }
 
-# kubectl autocompletion
-source <(kubectl completion zsh)
-complete -F __start_kubectl kctl
-
-# brew
-eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
-
-# perl
-eval $(perl -I$HOME/perl5/lib/perl5 -Mlocal::lib)
-
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
 __conda_setup="$('/home/bernardo/anaconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
@@ -109,15 +72,12 @@ fi
 unset __conda_setup
 # <<< conda initialize <<<
 
-# pyenv
-export PYENV_ROOT="$HOME/.pyenv"
-command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init -)"
+# brew configuration
+eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 
-# nvm
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+# kubectl autocompletion
+source <(kubectl completion zsh)
+complete -F __start_kubectl kctl
 
 # BEGIN_KITTY_SHELL_INTEGRATION
 if test -e "$HOME/.local/lib/kitty/shell-integration/kitty.zsh"; then source "$HOME/.local/lib/kitty/shell-integration/kitty.zsh"; fi
@@ -128,3 +88,13 @@ if test -e "$HOME/.local/lib/kitty/shell-integration/kitty.zsh"; then source "$H
 
 # For benchmarking purposes uncomment this line
 #zprof
+
+# asdf-direnv config source
+source "${XDG_CONFIG_HOME:-$HOME/.config}/asdf-direnv/zshrc"
+
+if ! pgrep -u "$USER" ssh-agent > /dev/null; then
+    ssh-agent -t 1h > "$XDG_RUNTIME_DIR/ssh-agent.env"
+fi
+if [[ ! -f "$SSH_AUTH_SOCK" ]]; then
+    source "$XDG_RUNTIME_DIR/ssh-agent.env" >/dev/null
+fi

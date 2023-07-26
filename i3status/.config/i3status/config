@@ -7,13 +7,14 @@
 # If the above line is not correctly displayed, fix your editor first!
 
 general {
-        colors = true
-        interval = 1
+    colors = true
+    color_good = "#5398bc"
+    interval = 1
 }
 
-order += "wireless wlp3s0"
+order += "wireless wlan0"
 order += "ethernet enp2s0f0"
-order += "tztime local"
+#order += "tztime local"
 order += "disk /"
 order += "disk /home"
 
@@ -21,20 +22,20 @@ tztime local {
     format = "%Y-%m-%d %H:%M:%S"
 }
 
-wireless wlp3s0 {
+wireless wlan0 {
     format_up = "W: (%quality at %essid, %bitrate / %frequency) %ip"
-    format_down = "W: down"
+    format_down = ""
 }
 
 ethernet enp2s0f0 {
-        format_up = "E: %ip (%speed)"
-        format_down = "E: down"
+    format_up = "E: %ip (%speed)"
+    format_down = ""
 }
 
 disk "/" {
-        format = "root[%avail]"
+    format = "/root [ %avail ]"
 }
 
 disk "/home" {
-        format = "home[%avail]"
+    format = "/home [ %avail ]"
 }

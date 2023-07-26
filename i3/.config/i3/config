@@ -13,11 +13,10 @@ set $mod Mod4
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
-#font pango:monospace 8
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
-font pango:DejaVu Sans Mono, JetBrains Mono 9
+font pango:Noto Sans 7
 
 # The combination of xss-lock, nm-applet and pactl is a popular choice, so
 # they are included here as an example. Modify as you see fit.
@@ -27,37 +26,28 @@ font pango:DejaVu Sans Mono, JetBrains Mono 9
 exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 
 # Start window compositor (for blurring windows, transparency, fixing other things related...)
-exec --no-startup-id picom
+exec --no-startup-id picom -fb
 
-# NetworkManager is the most popular way to manage wireless networks on Linux,
-# and nm-applet is a desktop environment-independent system tray GUI for it.
-#exec --no-startup-id nm-applet
+# Linux gestures
+exec --no-startup-id fusuma -d
 
 # Use pactl to adjust volume in PulseAudio.
 set $refresh_i3status killall -SIGUSR1 i3status
-
-# Media player controls
-bindsym XF86AudioPlay exec playerctl play-pause
-bindsym XF86AudioNext exec playerctl next
-bindsym XF86AudioPrev exec playerctl previous
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
 set $terminal kitty
 # start a terminal
-bindsym $mod+Return exec $terminal
-bindsym $mod+Shift+Return exec $terminal -d "$(xcwd)"
+bindsym $mod+Return exec --no-startup-id $terminal
+bindsym $mod+Shift+Return exec --no-startup-id $terminal -d "$(xcwd)"
 
 # kill focused window
 bindsym $mod+q kill
 
 # start dmenu (a program launcher)
-bindsym $mod+d exec --no-startup-id ~/.config/rofi/bin/launcher_misc
-#bindsym $mod+m exec --no-startup-id ~/.config/rofi/bin/powermenu
-#bindsym $mod+d exec rofi -show drun -show-icons
-# start rofi run mode
-bindsym $mod+Shift+d exec rofi -show run
+set $menu --no-startup-id qdbus org.kde.krunner /App display
+bindsym $mod+d exec --no-startup-id $menu
 
 # change focus
 bindsym $mod+h focus left
@@ -151,7 +141,36 @@ bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
-bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
+#bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
+bindsym $mod+Shift+e exec --no-startup-id qdbus-qt5 org.kde.ksmserver /KSMServer org.kde.KSMServerInterface.logout -1 -1 -1
+
+# Colors
+# <colorclass>          <border> <background> <text> <indicator> <child_border>
+client.focused          #4c7899 #285577 #ffffff #2e9ef4 #285577
+client.focused_inactive #333333 #5f676a #ffffff #484e50 #5f676a
+client.unfocused        #333333 #222222 #888888 #292d2e #222222
+client.urgent           #2f343a #900000 #ffffff #900000 #900000
+client.placeholder      #000000 #0c0c0c #ffffff #000000 #0c0c0c
+client.background       #ffffff
+
+# Start i3bar to display a workspace bar (plus the system information i3status
+# finds out, if available)
+bar {
+        mode dock
+
+        i3bar_command i3bar --transparency
+        status_command i3status
+        # disable tray icons to avoid race conditions with other bars
+        tray_output none
+        font pango:Noto Sans 8
+        colors {
+            active_workspace #4c7899 #285577 #ffffff
+            focused_workspace #45433d #5398bc #ffffff
+            inactive_workspace #45433d #40454a #ffffff
+            background #2b3036
+        }
+}
+
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
@@ -173,122 +192,112 @@ mode "resize" {
         bindsym Right resize grow width 10 px or 10 ppt
 
         # back to normal: Enter or Escape or $mod+r
-        bindsym Return mode "default"
-        bindsym Escape mode "default"
-        bindsym $mod+r mode "default"
+        bindsym Return mode "default" ; exec i3-msg border pixel 1
+        bindsym Escape mode "default" ; exec i3-msg border pixel 1
+        bindsym $mod+r mode "default" ; exec i3-msg border pixel 1
 }
 
 bindsym $mod+r mode "resize"
 
 # General Settings
 hide_edge_borders both
-default_border normal 1
-focus_follows_mouse no
+default_border pixel 1
+default_floating_border pixel 1
+smart_borders on
+focus_follows_mouse yes
 # Switch to urgent workspace when clicking notification
 focus_on_window_activation focus
+gaps inner 16px
+gaps outer 3px
 
-# class                 border  backgr. text    indicator child_border
-client.focused          #45433d #7b9352 #ffffff #2e9ef4   #45433d
-
-# Start i3bar to display a workspace bar (plus the system information i3status
-# finds out, if available)
-bar {
-        mode dock
-        #output eDP
-        #output HDMI-A-0
-        #output DisplayPort-0
-        #output DisplayPort-1
-
-        status_command i3status
-        tray_output primary
-        font pango:DejaVu Sans Mono 9
-        colors {
-            # <colorclass> <border> <background> <text>
-            focused_workspace #45433d #7b9352 #ffffff
-        }
-}
-
-# Startup executions
-#exec --no-startup-id telegram-desktop
-#exec --no-startup-id thunderbird
-#exec --no-startup-id discord
-#exec --no-startup-id ClickUp.AppImage
-#exec --no-startup-id google-chat-electron
+# Set window icon for all windows
+for_window [all] title_window_icon on
 
 # Assign workspace to monitors
 workspace 1 output primary
 workspace 2 output DisplayPort-0
 workspace 3 output HDMI-A-0
 workspace 4 output HDMI-A-0
+workspace 5 output HDMI-A-0
 
 # Program assignments
-assign [class="^Thunderbird$"] → $ws4
+assign [class="^Thunderbird$"] → $ws5
 assign [class="^discord$"] → $ws4
 assign [class="^google-chat-electron$"] → $ws4
 
 # Custom keys
-bindsym $mod+Shift+x exec i3lock -c "#42484D"
-bindsym $mod+Ctrl+s exec systemctl suspend
-bindsym $mod+Ctrl+Shift+s exec systemctl poweroff
-bindsym Mod1+Tab exec rofi -show window -show-icons
-bindsym $mod+Shift+S exec bash -c "sleep 0.1 && mate-screenshot -a"
-bindsym $mod+P exec copyq show
-
-# Set window icon for all windows
-for_window [all] title_window_icon on
+#bindsym $mod+Shift+x exec i3lock -c "#42484D"
+bindsym $mod+P exec --no-startup-id copyq show
 
 # Select which programs to open in floating mode by default
+for_window [window_role="pop-up"] floating enable
+for_window [window_role="bubble"] floating enable
+for_window [window_role="task_dialog"] floating enable
+for_window [window_role="Preferences"] floating enable
+for_window [window_role="About"] floating enable
+for_window [window_type="dialog"] floating enable
+for_window [window_type="menu"] floating enable
+for_window [window_role="Organizer"] floating enable
+for_window [window_role="page-info"] floating enable
+for_window [window_role="toolbox"] floating enable
+for_window [window_role="webconsole"] floating enable
+for_window [instance="__scratchpad"] floating enable
+
+# Application specific
 for_window [class="Shutter"] floating enable
 for_window [title="^Android Emulator"] floating enable
 for_window [class="Pick-colour-picker"] floating enable
 for_window [class="Mate-appearance-properties"] floating enable
-for_window [class="^Thunderbird$" instance="^Calendar$"] floating enable
-for_window [class="^Thunderbird$" instance="^Msgcompose$"] floating enable
-for_window [class="^copyq$" instance="^copyq$"] floating enable
-for_window [class="^copyq$" instance="^copyq$"] move position center
-
-# i3-resurrect configuration
-set $i3_resurrect i3-resurrect
+for_window [class="^thunderbird$" instance="^Calendar$"] floating enable
+for_window [class="^thunderbird$" instance="^Msgcompose$"] floating enable
+for_window [class="^copyq$" instance="^copyq$"] floating enable, move position center
+for_window [class="^Solaar$"] floating enable, move position center
+for_window [class="^Nvidia-settings$"] floating enable, move position center
+for_window [class="^soffice.bin$"] move position center
+for_window [class="SimpleScreenRecorder"] floating enable, move position center
+for_window [class="smplayer" title="Find Subtitles"] floating enable, move position center
+for_window [class="vlc" title="VLSub"] floating enable, move position center
 
 # restore session at startup (a sleep is needed due to i3 limitations)
-exec --no-startup-id "i3-resurrect restore -w 1; sleep 0.5; i3-resurrect restore -w 2; sleep 0.5; i3-resurrect restore -w 3; sleep 0.5; i3-resurrect restore -w 4;"
+exec --no-startup-id "i3-resurrect restore -w 1; sleep 0.5; i3-resurrect restore -w 2; sleep 0.5; i3-resurrect restore -w 3; sleep 0.5; i3-resurrect restore -w 4; sleep 0.5; i3-resurrect restore -w 5"
 
-#mode "save-workspace" {
-  #bindsym 1 exec $i3_resurrect save -w 1
-  #bindsym 2 exec $i3_resurrect save -w 2
-  #bindsym 3 exec $i3_resurrect save -w 3
-  #bindsym 4 exec $i3_resurrect save -w 4
-  #bindsym 5 exec $i3_resurrect save -w 5
-  #bindsym 6 exec $i3_resurrect save -w 6
-  #bindsym 7 exec $i3_resurrect save -w 7
-  #bindsym 8 exec $i3_resurrect save -w 8
-  #bindsym 9 exec $i3_resurrect save -w 9
-  #bindsym 0 exec $i3_resurrect save -w 0
+# Media player controls
+bindsym XF86AudioPlay exec --no-startup-id playerctl play-pause
+bindsym XF86AudioNext exec --no-startup-id playerctl next
+bindsym XF86AudioPrev exec --no-startup-id playerctl previous
 
-  ## Back to normal: Enter, Escape, or s
-  #bindsym Return mode "default"
-  #bindsym Escape mode "default"
-  #bindsym s mode "default"
-  #bindsym $mod+s mode "default"
-#}
-# bindsym $mod+s mode "save-workspace"
+# KDE Plasma Settings
+exec --no-startup-id /usr/lib/pam_kwallet_init
+exec --no-startup-id wmctrl -c Plasma
+for_window [title="Desktop @ QRect.*"] kill; floating enable; border none
+for_window [class="ksplash"] kill
+for_window [class="Plasma"] floating enable, border none
+for_window [title="plasma-desktop"] floating enable, border none
+for_window [title="win7"] floating enable, border none
+for_window [class="yakuake"] floating enable;
+for_window [class="lattedock"] floating enable;
+for_window [class="kruler"] floating enable; border none
+for_window [class="krunner"] floating enable, border none
+for_window [class="Kmix"] floating enable, border none
+for_window [class="Klipper"] floating enable, border none
+for_window [class="kscreen_osd_service"] floating enable, move position center
+for_window [class="tastenbrett"] floating enable, move position center
+for_window [class="Plasmoidviewer"] floating enable, border none
+for_window [class="(?i)*nextcloud*"] floating disable
+for_window [class="systemsettings"] floating enable, move position center
+for_window [class="kcalc"] floating enable, move position center
+for_window [class="plasma.emojier"] floating enable
+for_window [class="plasmashell"] floating enable
+for_window [class="plasmashell" window_type="notification"] floating enable, border none, move position center
+no_focus [class="plasmashell" window_type="notification"]
 
-#mode "restore-workspace" {
-  #bindsym 1 exec $i3_resurrect restore -w 1
-  #bindsym 2 exec $i3_resurrect restore -w 2
-  #bindsym 3 exec $i3_resurrect restore -w 3
-  #bindsym 4 exec $i3_resurrect restore -w 4
-  #bindsym 5 exec $i3_resurrect restore -w 5
-  #bindsym 6 exec $i3_resurrect restore -w 6
-  #bindsym 7 exec $i3_resurrect restore -w 7
-  #bindsym 8 exec $i3_resurrect restore -w 8
-  #bindsym 9 exec $i3_resurrect restore -w 9
-  #bindsym 0 exec $i3_resurrect restore -w 0
+bindsym XF86AudioRaiseVolume exec --no-startup-id qdbus org.kde.kglobalaccel /component/kmix invokeShortcut "increase_volume"
+bindsym XF86AudioLowerVolume exec --no-startup-id qdbus org.kde.kglobalaccel /component/kmix invokeShortcut "decrease_volume"
+bindsym XF86AudioMute exec --no-startup-id qdbus org.kde.kglobalaccel /component/kmix invokeShortcut "mute"
+bindsym XF86AudioMicMute exec --no-startup-id qdbus org.kde.kglobalaccel /component/kmix invokeShortcut "mic_mute"
 
-  ## Back to normal: Enter, Escape, or n
-  #bindsym Return mode "default"
-  #bindsym Escape mode "default"
-  #bindsym n mode "default"
-  #bindsym $mod+n mode "default"
-#}
-# bindsym $mod+n mode "restore-workspace"
+# wallpaper
+exec_always --no-startup-id feh --bg-scale /usr/share/wallpapers/Next/contents/images_dark/1920x1080.png
+
+# Auto switch between horizontal and vertical layouts
+#exec_always --no-startup-id autotiling

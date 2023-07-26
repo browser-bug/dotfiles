@@ -1,9 +1,6 @@
-# theme
-include dracula.conf
-
 # fonts
-font_family JetBrains Mono Regular Nerd Font
-font_size 12
+font_family MesloLGS Nerd Font
+font_size 10.5
 #disable_ligatures always
 map ctrl+plus change_font_size all +1.0
 map ctrl+minus change_font_size all -1.0
@@ -12,11 +9,13 @@ map ctrl+0 change_font_size all 0
 # general
 remember_window_size no
 copy_on_select yes
-map kitty_mod+period launch --type=overlay kitty +edit-config
 enable_audio_bell no
 update_check_interval 0
-
+confirm_os_window_close 0
 shell_integration disabled
+
+# Open config utility
+map kitty_mod+period launch --type=overlay kitty +edit-config
 
 # open_url
 url_style single
@@ -39,16 +38,11 @@ map ctrl+shift+j previous_tab
 
 # window management
 enabled_layouts horizontal
-map ctrl+alt+l launch --cwd=current
-map ctrl+alt+k next_window
-map ctrl+alt+j previous_window
+map ctrl+shift+alt+l launch --cwd=current
+map ctrl+shift+alt+k next_window
+map ctrl+shift+alt+j previous_window
 
-# useful mappings for programming
-map alt+è send_text all [
-map alt+plus send_text all ]
-map shift+alt+è send_text all {
-map shift+alt+plus send_text all }
-map alt+ì send_text all ~
-map alt+ò send_text all @
-map alt+à send_text all \u0023
-map alt+' send_text all `
+# BEGIN_KITTY_THEME
+# Chalk
+include current-theme.conf
+# END_KITTY_THEME

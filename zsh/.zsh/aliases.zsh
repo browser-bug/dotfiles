@@ -1,3 +1,4 @@
+alias vim='nvim'
 alias open='xdg-open'
 alias fd='fdfind'
 alias icat="kitty +kitten icat --align left"

@@ -7,14 +7,6 @@ if exists('+termguicolors')
 endif
 colorscheme gruvbox
 
-"let g:dracula_colorterm = 0
-"colorscheme dracula
-"sign define vimspectorBP         text=\ ● texthl=DraculaOrange
-"sign define vimspectorBPCond     text=\ ◆ texthl=DraculaOrange
-"sign define vimspectorBPDisabled text=\ ● texthl=LineNr
-"sign define vimspectorPC         text=\ ▶ texthl=DraculaGreen linehl=CursorLine
-"sign define vimspectorPCBP       text=●▶  texthl=DraculaGreen linehl=CursorLine
-
 "Colorizer
 let g:colorizer_auto_filetype='css,html,rasi'
 

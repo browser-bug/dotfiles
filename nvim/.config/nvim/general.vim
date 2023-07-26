@@ -55,3 +55,7 @@ set listchars=tab:»·,eol:↲,nbsp:␣,extends:…,precedes:<,extends:>,trail:�
 " Set the maximum number of items to show in the popup menu for ins.
 " completion
 set pumheight=10
+
+let g:loaded_perl_provider = 0
+let g:python3_host_prog = '/usr/bin/python3'
+let g:node_host_prog = '/usr/local/lib/node_modules/neovim/bin/cli.js'
