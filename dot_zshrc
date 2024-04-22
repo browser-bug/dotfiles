@@ -1,0 +1,81 @@
+# For benchmarking purposes uncomment this line (and the one at the bottom)
+# zmodload zsh/zprof
+
+###############
+# Powerlevel10k
+###############
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
+(( ${+commands[direnv]} )) && emulate zsh -c "$(direnv export zsh)"
+
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+(( ${+commands[direnv]} )) && emulate zsh -c "$(direnv hook zsh)"
+
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+######
+# ASDF
+######
+source "$HOME/.asdf/asdf.sh"
+ASDF_DIR="${HOME}/.asdf"
+# Append completions to fpath
+fpath=(${ASDF_DIR}/completions $fpath)
+
+########
+# Direnv
+########
+#! do not source it here if using Powerlevel10k (see above)
+#eval "$(direnv hook zsh)"
+
+#####
+# FZF
+#####
+eval "$(fzf --zsh)"
+
+#################
+# Zim Integration
+#################
+ZIM_HOME=~/.zim
+
+# Download zimfw plugin manager if missing.
+if [[ ! -e ${ZIM_HOME}/zimfw.zsh ]]; then
+  curl -fsSL --create-dirs -o ${ZIM_HOME}/zimfw.zsh \
+      https://github.com/zimfw/zimfw/releases/latest/download/zimfw.zsh
+fi
+
+# Install missing modules, and update ${ZIM_HOME}/init.zsh if missing or outdated.
+if [[ ! ${ZIM_HOME}/init.zsh -nt ${ZDOTDIR:-${HOME}}/.zimrc ]]; then
+  source ${ZIM_HOME}/zimfw.zsh init -q
+fi
+
+# Module configurations
+#! always put this before the module initialization
+zstyle ':zim:input' double-dot-expand yes
+# Which identities are loaded and cached on login
+zstyle ':zim:ssh' ids 'cronus' 'hyperion' 'atlas' 'tetrapak'
+
+# Initialize modules
+source ${ZIM_HOME}/init.zsh
+
+#########
+# Configs
+#########
+#! always source last to avoid getting them overwritten
+config_files=(~/.zsh/**/*.zsh(N))
+for file in ${config_files}
+do
+  source $file
+done
+
+# Compdef is not defined before Zim, so any dependent script goes down here
+
+#########
+# Chezmoi
+#########
+eval "$(chezmoi completion zsh)"
+
+# For benchmarking purposes uncomment this line
+# zprof

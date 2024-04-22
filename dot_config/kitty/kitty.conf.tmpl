@@ -1,0 +1,56 @@
+# fonts
+font_family Noto Sans
+{{ if eq .chezmoi.os "darwin" }}
+font_size 17
+{{ else if eq .chezmoi.os "linux" }}
+font_size 10.5
+{{ else }}
+font_size 13
+{{ end }}
+map ctrl+plus change_font_size all +1.0
+map ctrl+minus change_font_size all -1.0
+map ctrl+0 change_font_size all 0
+
+# general
+remember_window_size no
+copy_on_select yes
+strip_trailing_spaces smart
+enable_audio_bell no
+update_check_interval 0
+confirm_os_window_close 0
+shell_integration disabled
+background_opacity 0.95
+
+# Open config utility
+map kitty_mod+period launch --type=overlay kitty +edit-config
+
+# open_url
+url_style single
+mouse_map ctrl+left click grabbed,ungrabbed mouse_click_url
+
+# carriage-return for zsh-autosuggestion \033 = ^[
+map ctrl+enter send_text all \033[[CE
+
+# key mappings fixes
+#map shift+enter send_text all \x0d
+#map shift+backspace send_text all \x7f
+#map shift+menu send_text all $
+#map ctrl+menu send_text all ^
+
+# tab management
+tab_bar_style powerline
+tab_powerline_style angled
+map ctrl+shift+l new_tab_with_cwd
+map ctrl+shift+k next_tab
+map ctrl+shift+j previous_tab
+
+# window management
+enabled_layouts horizontal
+map ctrl+shift+alt+l launch --cwd=current
+map ctrl+shift+alt+k next_window
+map ctrl+shift+alt+j previous_window
+
+# BEGIN_KITTY_THEME
+# One Half Dark
+include current-theme.conf
+# END_KITTY_THEME

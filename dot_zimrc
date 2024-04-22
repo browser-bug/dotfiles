@@ -1,0 +1,14 @@
+zmodule completion
+zmodule environment
+zmodule input
+
+zmodule ssh
+zmodule archive
+zmodule utility
+
+zmodule agkozak/zsh-z
+zmodule zsh-users/zsh-syntax-highlighting
+zmodule zsh-users/zsh-autosuggestions
+zmodule romkatv/powerlevel10k --use degit
+zmodule ohmyzsh/ohmyzsh --root plugins/git
+

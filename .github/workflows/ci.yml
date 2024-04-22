@@ -1,0 +1,19 @@
+name: test
+
+on: [push]
+
+jobs:
+  test:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: ["ubuntu-latest", "macos-latest"]
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 10
+    
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Install dotfiles
+      run: sh -c "$(curl -fsLS get.chezmoi.io)" -- init --apply --progress true --color true browser-bug
+
