@@ -17,4 +17,5 @@ alias pbpaste='xclip -selection clipboard -o'
 alias check-big-files='ncdu'
 alias ssh="kitty +kitten ssh"
 alias cmoi="chezmoi"
+alias check-wayland-windows="qdbus6 org.kde.KWin /KWin org.kde.KWin.showDebugConsole"
 
