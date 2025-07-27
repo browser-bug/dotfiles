@@ -7,7 +7,7 @@ alias docker-compose="docker compose"
 alias add-line-breaks="git ls-files -z | while IFS= read -rd '' f; do tail -c1 < \"\$f\" | read -r _ || echo >> \"\$f\"; done"
 alias ipy="ipython"
 alias cat='bat'
-alias ls='eza --icons'
+alias ls='eza --icons=auto'
 alias la='ls -a'
 alias lla='ls -la'
 alias lt='ls --tree'
@@ -18,4 +18,3 @@ alias check-big-files='ncdu'
 alias ssh="kitty +kitten ssh"
 alias cmoi="chezmoi"
 alias check-wayland-windows="qdbus6 org.kde.KWin /KWin org.kde.KWin.showDebugConsole"
-

@@ -6,6 +6,9 @@ layout_python-venv() {
     local python=${1:-python3}
     [[ $# -gt 0 ]] && shift
     unset PYTHONHOME
+
+    log_status "using python-venv $python"
+
     if [[ -n $VIRTUAL_ENV ]]; then
         VIRTUAL_ENV=$(realpath "${VIRTUAL_ENV}")
     else
@@ -15,13 +18,16 @@ layout_python-venv() {
             log_error "Could not detect Python version"
             return 1
         fi
-        VIRTUAL_ENV=$PWD/.direnv/python-venv-$python_version
+        VIRTUAL_ENV=$PWD/.direnv/python$python_version
     fi
+
     export VIRTUAL_ENV
     if [[ ! -d $VIRTUAL_ENV ]]; then
         log_status "no venv found; creating $VIRTUAL_ENV"
         "$python" -m venv "$VIRTUAL_ENV"
     fi
+
+    log_status "Successfully loaded $python, from prefix ($VIRTUAL_ENV)"
 
     PATH="${VIRTUAL_ENV}/bin:${PATH}"
     export PATH

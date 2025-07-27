@@ -1,6 +1,15 @@
 # For benchmarking purposes uncomment this line (and the one at the bottom)
 # zmodload zsh/zprof
 
+######
+# ASDF
+######
+# Since we usually use asdf with direnv is important to source asdf BEFORE `direnv hook zsh`
+source "$HOME/.asdf/asdf.sh"
+ASDF_DIR="${HOME}/.asdf"
+# Append completions to fpath
+fpath=(${ASDF_DIR}/completions $fpath)
+
 ###############
 # Powerlevel10k
 ###############
@@ -15,14 +24,6 @@ fi
 (( ${+commands[direnv]} )) && emulate zsh -c "$(direnv hook zsh)"
 
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-
-######
-# ASDF
-######
-source "$HOME/.asdf/asdf.sh"
-ASDF_DIR="${HOME}/.asdf"
-# Append completions to fpath
-fpath=(${ASDF_DIR}/completions $fpath)
 
 ########
 # Direnv
