@@ -1,0 +1,23 @@
+# ~/.local/share/chezmoi/.chezmoi.toml.tmpl
+
+{{- $git_email := "" }}
+{{- $git_name := "" }}
+{{ if stdinIsATTY }}
+    {{- $git_email = promptString "Git email address for the author/committer" }}
+    {{- $git_name = promptString "Git username for the author/committer (Firstname Lastname)" }}
+{{ end }}
+
+[data]
+git_email = "{{ $git_email }}"
+git_name = "{{ $git_name }}"
+
+[diff]
+command = "code"
+args = ["--wait", "--diff"]
+
+[merge]
+command = "bash"
+args = [
+    "-c",
+    "cp {{`{{ .Target }}`}} {{`{{ .Target }}`}}.base && code --new-window --wait --merge {{`{{ .Destination }}`}} {{`{{ .Target }}`}} {{`{{ .Target }}`}}.base {{`{{ .Source }}`}}"
+]
